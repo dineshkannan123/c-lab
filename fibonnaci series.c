@@ -1,28 +1,32 @@
-#include<stdio.h>
-int fibonnaci (int n)
-{
-	if (n==1||n==2)
+#include <stdio.h>
+
+int main() {
+    int n, t1 = 0, t2 = 1,i, nextTerm;
+
+    // Get the number of terms from the user
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+
+    // Print a message indicating the series
+    printf("Fibonacci Series: ");
+
+    // Handle the first two terms separately
+    if (n >= 1) {
+        printf("%d", t1);
+    }
+    if (n >= 2) {
+        printf(", %d", t2);
+    }
+
+    // Generate and print the remaining terms
+     for (i = 3; i <= n; ++i) 
 	{
-		return 1;
-	}
-	return fibonnaci(n-1)+fibonnaci(n-2);
-}
-int main()
-{
-	int n,i=1;
-	int fib;
-	printf("enter the upper limit n:");
-	scanf("%d",&n);
-	printf("fibonnaci serier up to %d:\n",n);
-	while (1)
-	{
-		fib=fibonnaci (i);
-		if(fib>n)
-		{
-			break;
-		}
-		printf("%d",fib);
-	}
-	printf("\n");
-	return 0;
+        nextTerm = t1 + t2;
+        printf(", %d", nextTerm);
+        t1 = t2;
+        t2 = nextTerm;
+    }
+
+    printf("\n"); // Newline for better formatting
+    return 0;
 }
